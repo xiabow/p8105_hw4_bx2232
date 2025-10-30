@@ -1,0 +1,248 @@
+---
+title: "Instacart Shopping Insights"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+    source_code: embed
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(tidyverse)
+library(plotly)
+library(p8105.datasets)
+
+# Load Instacart data
+data("instacart")
+
+# Sample data for performance (dataset is large)
+set.seed(123)
+instacart_sample <- instacart |>
+  sample_n(100000)
+```
+
+Column {data-width=500}
+-----------------------------------------------------------------------
+
+### Most Popular Products by Department
+
+```{r}
+# Bar plot: Top products
+top_products <- instacart_sample |>
+  count(product_name, department, sort = TRUE) |>
+  slice_head(n = 20) |>
+  mutate(product_name = fct_reorder(product_name, n))
+
+product_plot <- plot_ly(
+  top_products,
+  x = ~n,
+  y = ~product_name,
+  type = "bar",
+  color = ~department,
+  colors = "viridis",
+  text = ~paste("Product:", product_name, "<br>Orders:", n, "<br>Department:", department),
+  hoverinfo = "text"
+) |>
+  layout(
+    title = list(text = "Top 20 Most Ordered Products", font = list(size = 16)),
+    xaxis = list(title = "Number of Orders", titlefont = list(size = 14)),
+    yaxis = list(title = "", tickfont = list(size = 11)),
+    showlegend = TRUE,
+    legend = list(title = list(text = "Department")),
+    margin = list(l = 200)
+  )
+
+product_plot
+```
+
+### Order Timing Patterns
+
+```{r}
+# Line plot: Orders by hour of day
+hourly_orders <- instacart_sample |>
+  count(order_hour_of_day) |>
+  arrange(order_hour_of_day)
+
+hour_plot <- plot_ly(
+  hourly_orders,
+  x = ~order_hour_of_day,
+  y = ~n,
+  type = "scatter",
+  mode = "lines+markers",
+  line = list(color = "#1f77b4", width = 3),
+  marker = list(size = 8, color = "#ff7f0e"),
+  text = ~paste("Hour:", order_hour_of_day, "<br>Orders:", n),
+  hoverinfo = "text"
+) |>
+  layout(
+    title = list(text = "Shopping Activity Throughout the Day", font = list(size = 16)),
+    xaxis = list(
+      title = "Hour of Day",
+      titlefont = list(size = 14),
+      tickmode = "linear",
+      tick0 = 0,
+      dtick = 2
+    ),
+    yaxis = list(title = "Number of Orders", titlefont = list(size = 14)),
+    hovermode = "closest"
+  )
+
+hour_plot
+```
+
+Column {data-width=500}
+-----------------------------------------------------------------------
+
+### Popular Aisles by Department
+
+```{r}
+# Grouped bar plot: Top aisles per department
+top_aisles <- instacart_sample |>
+  count(aisle, department, sort = TRUE) |>
+  group_by(department) |>
+  slice_head(n = 3) |>
+  ungroup() |>
+  mutate(aisle = fct_reorder(aisle, n))
+
+aisle_plot <- plot_ly(
+  top_aisles,
+  x = ~n,
+  y = ~aisle,
+  type = "bar",
+  color = ~department,
+  colors = "Set2",
+  text = ~paste("Aisle:", aisle, "<br>Orders:", n, "<br>Department:", department),
+  hoverinfo = "text"
+) |>
+  layout(
+    title = list(text = "Top 3 Aisles per Department", font = list(size = 16)),
+    xaxis = list(title = "Number of Orders", titlefont = list(size = 14)),
+    yaxis = list(title = "", tickfont = list(size = 10)),
+    showlegend = TRUE,
+    legend = list(title = list(text = "Department")),
+    barmode = "group",
+    margin = list(l = 180)
+  )
+
+aisle_plot
+```
+
+### Reorder Behavior by Day of Week
+
+```{r}
+# Box plot: Reorder patterns
+reorder_data <- instacart_sample |>
+  mutate(
+    day_of_week = case_when(
+      order_dow == 0 ~ "Sunday",
+      order_dow == 1 ~ "Monday",
+      order_dow == 2 ~ "Tuesday",
+      order_dow == 3 ~ "Wednesday",
+      order_dow == 4 ~ "Thursday",
+      order_dow == 5 ~ "Friday",
+      order_dow == 6 ~ "Saturday"
+    ),
+    day_of_week = factor(day_of_week, levels = c("Sunday", "Monday", "Tuesday", 
+                                                   "Wednesday", "Thursday", "Friday", "Saturday"))
+  ) |>
+  group_by(order_id, day_of_week) |>
+  summarise(
+    reorder_rate = mean(reordered) * 100,
+    .groups = "drop"
+  )
+
+reorder_plot <- plot_ly(
+  reorder_data,
+  x = ~day_of_week,
+  y = ~reorder_rate,
+  type = "box",
+  color = ~day_of_week,
+  colors = "Paired",
+  boxmean = TRUE
+) |>
+  layout(
+    title = list(text = "Reorder Rate by Day of Week", font = list(size = 16)),
+    xaxis = list(title = "Day of Week", titlefont = list(size = 14)),
+    yaxis = list(title = "Reorder Rate (%)", titlefont = list(size = 14)),
+    showlegend = FALSE
+  )
+
+reorder_plot
+```
+
+Column {data-width=500}
+-----------------------------------------------------------------------
+
+### Department Distribution
+
+```{r}
+# Scatter plot: Department order patterns
+dept_summary <- instacart_sample |>
+  group_by(department) |>
+  summarise(
+    total_orders = n(),
+    avg_cart_position = mean(add_to_cart_order, na.rm = TRUE),
+    reorder_rate = mean(reordered) * 100,
+    .groups = "drop"
+  ) |>
+  filter(total_orders > 500)
+
+scatter_plot <- plot_ly(
+  dept_summary,
+  x = ~avg_cart_position,
+  y = ~reorder_rate,
+  type = "scatter",
+  mode = "markers",
+  marker = list(
+    size = ~total_orders/100,
+    color = ~total_orders,
+    colorscale = "Viridis",
+    showscale = TRUE,
+    colorbar = list(title = "Orders")
+  ),
+  text = ~paste(
+    "Department:", department,
+    "<br>Total Orders:", total_orders,
+    "<br>Avg Cart Position:", round(avg_cart_position, 2),
+    "<br>Reorder Rate:", round(reorder_rate, 1), "%"
+  ),
+  hoverinfo = "text"
+) |>
+  layout(
+    title = list(text = "Department Ordering Patterns", font = list(size = 16)),
+    xaxis = list(title = "Average Position in Cart", titlefont = list(size = 14)),
+    yaxis = list(title = "Reorder Rate (%)", titlefont = list(size = 14)),
+    hovermode = "closest"
+  )
+
+scatter_plot
+```
+
+### Weekly Shopping Frequency
+
+```{r}
+# Histogram: Days since prior order
+days_prior <- instacart_sample |>
+  filter(!is.na(days_since_prior_order)) |>
+  select(days_since_prior_order)
+
+histogram_plot <- plot_ly(
+  days_prior,
+  x = ~days_since_prior_order,
+  type = "histogram",
+  marker = list(
+    color = "#2ca02c",
+    line = list(color = "#1f7814", width = 1)
+  ),
+  nbinsx = 30
+) |>
+  layout(
+    title = list(text = "Distribution of Days Between Orders", font = list(size = 16)),
+    xaxis = list(title = "Days Since Prior Order", titlefont = list(size = 14)),
+    yaxis = list(title = "Number of Orders", titlefont = list(size = 14)),
+    bargap = 0.1
+  )
+
+histogram_plot
+```

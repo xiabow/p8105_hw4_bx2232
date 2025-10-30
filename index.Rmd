@@ -1,0 +1,47 @@
+---
+title: "Welcome to My Website"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## About Me
+
+<img src="images/headshot.jpg" style="width:25%; border:2px solid; margin-right: 20px" align="left">
+
+Hello! I'm **Bowen Xia**, a graduate student at Columbia University's Mailman School of Public Health. I'm passionate about using data science and statistical methods to address public health challenges and improve population health outcomes.
+
+Currently, I'm pursuing my MS in Biostatistics with a track in Public Health Data Science, where I'm developing skills in data analysis, statistical modeling, and reproducible research. My interests include applying advanced statistical techniques and machine learning methods to solve real-world public health problems.
+
+### Background
+
+I completed my undergraduate degree in Business Administration with a concentration in Finance and a minor in Mathematics at Northeastern University's D'Amore-McKim School of Business. During my studies, I gained experience in investment analysis, financial risk management, and quantitative methods.
+
+My interest in data science grew through research projects in machine learning applications, particularly in stock price prediction and AI privacy and security. I worked as an Investment Assistant at Cornerstone Venture Capital, where I conducted industry research and analysis using various financial software and databases. These experiences, combined with my quantitative coursework in calculus, linear algebra, and statistics, inspired me to pursue graduate training in biostatistics and public health data science.
+
+Now at Columbia, I'm excited to apply my analytical skills and business acumen to address critical public health challenges through rigorous statistical methods and data-driven approaches.
+
+### What I'm Working On
+
+Through coursework and projects at Columbia, I've been building expertise in:
+
+* Data wrangling and visualization using R and Python
+* Statistical analysis and modeling
+* Reproducible research practices with R Markdown and Git
+* Interactive data dashboards and web-based reporting
+* Machine learning applications in public health
+* Epidemiological study design and analysis
+
+### Get in Touch
+
+I'm always interested in connecting with fellow students, researchers, and public health professionals. Feel free to reach out via email or connect with me on LinkedIn and GitHub!
+
+---
+
+<center>
+**Quick Navigation**
+
+[View My Resume](resume.html) | [Check Out My Dashboard](dashboard.html) | [Visit My GitHub](https://github.com/bx2232)
+</center>

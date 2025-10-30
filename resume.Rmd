@@ -1,0 +1,124 @@
+---
+title: "Resume"
+output: html_document
+---
+
+# Bowen Xia
+
+**Email:** bx2232@cumc.columbia.edu | **UNI:** bx2232  
+**GitHub:** [github.com/xiabow](https://github.com/xiabow) | **LinkedIn:** [linkedin.com/in/bowen-xia](https://linkedin.com/in/bowen-xia)
+
+---
+
+## Education
+
+**Columbia University Mailman School of Public Health** | New York, NY  
+*Master of Science in Biostatistics* | Expected May 2026  
+*Track: Public Health Data Science*
+
+* Relevant Coursework: Data Science I, Probability, Principles of Epidemiology, Biostatistical Methods
+* Building expertise in statistical analysis, data visualization, and machine learning applications in public health
+* Developing skills in R and reproducible research practices in the future
+
+**Northeastern University, D'Amore-McKim School of Business** | Boston, MA  
+*Bachelor of Science in Business Administration, Minor in Mathematics* | December 2024  
+*Concentration: Finance* | GPA: 3.54
+
+* Relevant Coursework: Financial Risk Management, Investment, Corporate Finance, International Financial Management, Calculus I-III, Linear Algebra, Statistics, Group Theory
+
+---
+
+## Experience
+
+**Cornerstone Venture Capital** | Beijing, China  
+*Investment Assistant* | February 2023 - June 2023
+
+* Conducted in-depth research on various industries, including AI, drones, and autonomous driving, utilizing Wind Information, Choice, and other software to access securities research reports and better understand the core competitiveness of enterprises facing diverse bidding scenarios
+* Participated in the company's Business Plan seminars and handovers with invested companies to gain insights into how professional investors assess the viability of investment projects
+* Attended shareholder decision-making meetings, contributing perspectives on emerging industries to understand how investors initiate and develop successful projects
+* Conducted on-site visits during business trips to assess the development status of enterprise parks and engage with leaders, enhancing business acumen and strategic understanding
+
+**ISC Business Club** | Beijing, China  
+*Founder & Accountant* | September 2018 - June 2020
+
+* Recorded the daily income and expenditure of the club until graduation from high school, understanding the revenue surplus or loss to better help the club make future plans
+* Organized group activities and held regular meetings each week, including the establishment of supervision and audit positions to better manage the club
+* Made group plans and launched new products monthly to ensure that the club always had new products to produce, ensuring revenue and attracting new students while maintaining customer loyalty
+
+---
+
+## Research & Projects
+
+**Independent Research Project on AI Privacy and Security** | June 2024 - August 2024
+
+* Studied Recurrent Neural Networks (RNN) in Network Information Security, focusing on revolutionizing AI privacy and security in controversial digital identity systems
+* Addressed critical challenges in safeguarding sensitive personal data by leveraging Federated Learning to enhance both privacy and system robustness
+* Conducted extensive literature review exploring ethical dimensions of applying RNN in healthcare, energy, and finance sectors, emphasizing the use of time-series data
+* Analyzed data privacy concerns and investigated threats like member inference attacks that compromise sensitive information in machine learning models
+* Explored homomorphic encryption within Federated Learning frameworks to preserve confidentiality of local data, gradients, and global models
+
+**Stock Price Prediction Based on Machine Learning** | June 2022 - September 2022
+
+* Acquired relevant mathematical knowledge, including decision trees and Bayes' theorem, along with foundational concepts in machine learning such as Recurrent Neural Networks (RNN) and Long Short-Term Memory (LSTM)
+* Gained preliminary proficiency in Python and AI deep learning techniques
+* Developed an initial understanding of using machine learning for stock price prediction
+* Completed an independent research paper demonstrating the application of acquired knowledge
+
+**Instacart Shopping Insights Dashboard** | Fall 2025
+
+* Developed interactive flexdashboard using R and Plotly to visualize grocery shopping patterns from 100,000+ transaction records
+* Created six distinct plot types including bar charts, line graphs, scatter plots, box plots, and histograms to analyze consumer behavior
+* Implemented data wrangling and visualization techniques using tidyverse to identify trends in product popularity, shopping timing, and reorder patterns
+* [View the dashboard](dashboard.html)
+
+---
+
+## Certifications
+
+**IBM Data Science Certificate** | August 2024 - Present
+
+* Defining data science and highlighting its significance in today's data-driven world
+* Describing various career paths that lead to a profession in data science
+* Summarizing advice from experienced data science professionals for those starting out in the field
+
+---
+
+## Volunteer Experience
+
+**Beijing Ganen Foundation** | Beijing, China  
+*Volunteer & Communicator* | January 2019 - April 2019
+
+* Contacted schools and understood difficulties faced by local students
+* Promoted and raised money for the project to improve educational facilities
+* Helped improve school canteens and update stoves and kitchenware
+
+---
+
+## Skills
+
+**Programming & Analysis:** R (tidyverse, ggplot2, plotly, R Markdown), Python, SAS, Git/GitHub  
+**Technical Skills:** Machine Learning (RNN, LSTM), Data Visualization, Statistical Modeling, Federated Learning  
+**Software:** Microsoft Office Suite (Word, Excel, PowerPoint), Wind Information, Choice  
+**Statistical Methods:** Regression Analysis, Time Series Analysis, Bayesian Methods, Data Privacy & Security
+
+---
+
+## Languages
+
+* **Chinese:** Native
+* **English:** Fluent
+
+---
+
+## Interests
+
+* Playing Saxophone
+* Traveling
+* Ping Pong
+* Machine Learning and AI Applications in Finance and Public Health
+
+---
+
+*Last Updated: October 2025*
+
+

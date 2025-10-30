@@ -1,0 +1,22 @@
+name: "personal_website"
+output_dir: "."
+navbar:
+  title: "Bowen Xia"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "Resume"
+      href: resume.html
+    - text: "Dashboard"
+      href: dashboard.html
+  right:
+    - icon: fa-envelope
+      href: mailto:bx2232@cumc.columbia.edu
+    - icon: fa-github
+      href: https://github.com/bx2232
+    - icon: fa-linkedin
+      href: https://www.linkedin.com/in/bowen-xia
+output:
+  html_document:
+    theme: cosmo
+    highlight: textmate
